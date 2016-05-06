@@ -76,14 +76,14 @@ public class RetrofitServiceShould {
 
   @Test public void day_name_is_right() {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-    assertThat(service.dayName(new Date(0)), is("WED"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24)), is("THU"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 2)), is("FRI"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 3)), is("SAT"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 4)), is("SUN"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 5)), is("MON"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 6)), is("TUE"));
-    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 7)), is("WED"));
+    assertThat(service.dayName(new Date(0)), is("THU"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24)), is("FRI"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 2)), is("SAT"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 3)), is("SUN"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 4)), is("MON"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 5)), is("TUE"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 6)), is("WED"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 7)), is("THU"));
   }
 
   @NonNull private String body() throws Exception {
