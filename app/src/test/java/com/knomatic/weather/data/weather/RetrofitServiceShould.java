@@ -34,6 +34,7 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.times;
@@ -74,14 +75,14 @@ public class RetrofitServiceShould {
   }
 
   @Test public void day_name_is_right() {
-    Assert.assertThat(service.dayName(new Date(0)), is("WED"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24)), is("THU"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 2)), is("FRI"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 3)), is("SAT"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 4)), is("SUN"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 5)), is("MON"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 6)), is("TUE"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 7)), is("WED"));
+    assertThat(service.dayName(new Date(0)), is("WED"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24)), is("THU"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 2)), is("FRI"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 3)), is("SAT"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 4)), is("SUN"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 5)), is("MON"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 6)), is("TUE"));
+    assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 7)), is("WED"));
   }
 
   @NonNull private String body() throws Exception {
