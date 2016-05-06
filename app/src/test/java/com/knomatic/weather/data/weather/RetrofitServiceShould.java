@@ -23,10 +23,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.TimeZone;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -34,7 +34,7 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.times;
@@ -75,6 +75,7 @@ public class RetrofitServiceShould {
   }
 
   @Test public void day_name_is_right() {
+    TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     assertThat(service.dayName(new Date(0)), is("WED"));
     assertThat(service.dayName(new Date(1000 * 60 * 60 * 24)), is("THU"));
     assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 2)), is("FRI"));
