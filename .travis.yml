@@ -24,7 +24,6 @@ before_script:
 
 script:
   - ./gradlew test
-  - ./gradlew check connectedAndroidTest
 
 env:
   global:
@@ -32,8 +31,6 @@ env:
   matrix:
     - ANDROID_TARGET=android-17
     - ANDROID_TARGET=android-19
-    - ANDROID_TARGET=android-21
-
 
 notifications:
   email: false

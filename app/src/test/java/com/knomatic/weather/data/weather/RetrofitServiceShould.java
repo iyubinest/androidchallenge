@@ -74,8 +74,8 @@ public class RetrofitServiceShould {
   }
 
   @Test public void day_name_is_right() {
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 0)), is("WED"));
-    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 1)), is("THU"));
+    Assert.assertThat(service.dayName(new Date(0)), is("WED"));
+    Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24)), is("THU"));
     Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 2)), is("FRI"));
     Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 3)), is("SAT"));
     Assert.assertThat(service.dayName(new Date(1000 * 60 * 60 * 24 * 4)), is("SUN"));
