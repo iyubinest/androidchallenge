@@ -23,7 +23,8 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew test
+  - ./gradlew test --info
+  - ./gradlew check connectedAndroidTest
 
 env:
   global:
