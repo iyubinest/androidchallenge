@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/iyubinest/androidchallenge.svg?branch=master)](https://travis-ci.org/iyubinest/androidchallenge)
+[![Coverage Status](https://coveralls.io/repos/github/iyubinest/androidchallenge/badge.svg?branch=master)](https://coveralls.io/github/iyubinest/androidchallenge?branch=master)
 
 WEATHER CLIENT
 ======
