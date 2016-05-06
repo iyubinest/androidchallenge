@@ -1,27 +1,99 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+  compileSdkVersion 23
+  buildToolsVersion "23.0.3"
 
-    defaultConfig {
-        applicationId "com.knomatic.weather"
-        minSdkVersion 17
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+  signingConfigs {
+    release {
+      storeFile file('release.jks')
+      storePassword 'android'
+      keyAlias 'android'
+      keyPassword 'android'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+  }
+
+  defaultConfig {
+    applicationId "com.knomatic.weather"
+    minSdkVersion 15
+    targetSdkVersion 23
+    versionCode 1
+    versionName "1.0"
+
+    buildConfigField "String", "API_KEY", "\"e690845535ecbf91903d10411636313b\""
+    buildConfigField "String", "BASE_URL", "\"https://api.forecast.io/\""
+    multiDexEnabled true
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+
+  packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/services/javax.annotation.processing.Processor'
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+
+  dexOptions {
+    javaMaxHeapSize "512M"
+    threadCount 2
+  }
+}
+
+configurations.all {
+  resolutionStrategy.force 'com.android.support:support-annotations:23.1.1'
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  compile 'com.jakewharton:butterknife:8.0.1'
+  apt 'com.jakewharton:butterknife-compiler:8.0.1'
+
+  compile 'com.google.dagger:dagger:2.4'
+  apt 'com.google.dagger:dagger-compiler:2.4'
+  androidTestApt 'com.google.dagger:dagger-compiler:2.4'
+  provided 'org.glassfish:javax.annotation:10.0-b28'
+  apt 'frankiesardo:auto-parcel:1.0.1'
+  provided 'frankiesardo:auto-parcel:1.0.1'
+
+  compile 'com.android.support:appcompat-v7:23.3.0'
+  compile 'com.android.support:design:23.3.0'
+  compile 'com.android.support:support-annotations:23.3.0'
+  compile 'com.android.support:cardview-v7:23.3.0'
+  compile 'com.android.support:recyclerview-v7:23.3.0'
+  compile 'com.github.chrisbanes:PhotoView:1.2.6'
+
+  compile 'com.github.bumptech.glide:glide:3.7.0'
+  compile 'jp.wasabeef:glide-transformations:2.0.0'
+  compile 'com.android.support:support-v4:23.3.0'
+
+  compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.0.0-RC1'
+  compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+  compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
+
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.mockito:mockito-core:1.10.19'
+  testCompile 'com.squareup.okhttp3:mockwebserver:3.0.0-RC1'
+
+  androidTestCompile 'com.android.support.test:runner:0.5'
+  androidTestCompile 'com.android.support.test:rules:0.5'
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+  androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+  androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0') {
+    exclude group: 'com.android.support', module: 'appcompat'
+    exclude group: 'com.android.support', module: 'support-v4'
+    exclude module: 'recyclerview-v7'
+  }
+  androidTestCompile 'com.squareup.okhttp3:mockwebserver:3.0.0-RC1'
 }

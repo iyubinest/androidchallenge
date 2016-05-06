@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="300dp"
+  >
+
+  <ImageView
+    android:id="@+id/weather_background"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    />
+
+  <TextView
+    android:id="@+id/weather_day"
+    style="@style/AppTheme.Widgets.Weather.Header.Title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
+
+  <TextView
+    android:id="@+id/weather_summary"
+    style="@style/AppTheme.Widgets.Weather.Header.Summary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    />
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+      android:id="@+id/weather_icon"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_above="@+id/weather_summary"
+      android:src="@drawable/cloudfog"
+      android:tint="@color/font"
+      />
+
+    <TextView
+      android:id="@+id/weather_temperature"
+      style="@style/AppTheme.Widgets.Weather.Header.Temp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/weather_summary"
+      android:layout_toEndOf="@+id/weather_icon"
+      android:layout_toRightOf="@+id/weather_icon"
+      />
+  </LinearLayout>
+
+
+</RelativeLayout>
