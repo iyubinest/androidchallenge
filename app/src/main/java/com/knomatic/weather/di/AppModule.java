@@ -33,7 +33,7 @@ import retrofit2.Retrofit;
 
 @Module public class AppModule {
 
-  private final App app;
+  protected final App app;
 
   public AppModule(App app) {
     this.app = app;

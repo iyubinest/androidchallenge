@@ -16,12 +16,13 @@
 package com.knomatic.weather;
 
 import android.app.Application;
+import android.support.annotation.VisibleForTesting;
 import com.knomatic.weather.di.AppComponent;
 import com.knomatic.weather.di.AppModule;
 import com.knomatic.weather.di.DaggerAppComponent;
 
 public class App extends Application {
-  private AppComponent injector;
+  protected AppComponent injector;
 
   @Override public void onCreate() {
     super.onCreate();
@@ -30,5 +31,9 @@ public class App extends Application {
 
   public AppComponent injector() {
     return injector;
+  }
+
+  @VisibleForTesting public void setComponent(AppComponent injector) {
+    this.injector = injector;
   }
 }
